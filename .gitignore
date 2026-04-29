@@ -1,0 +1,19 @@
+# Fichiers sensibles
+.env
+config.php
+
+# Dossier images uploadées (trop lourd)
+images/menu/
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Fichiers de debug
+tests/
+update_orders_table.php
+validate_orders_system.php
+check_ordres_table.php
+
+# XAMPP logs
+*.log

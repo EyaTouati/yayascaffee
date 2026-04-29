@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up — Yaya's Caffee</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #2c1810;
+      overflow-x: hidden;
+    }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding-bottom: 45px;
+    }
+    .nav-inner {
+      background: #9ba36a;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 60px;
+      height: 75px;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #2c1810;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: #2c1810;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      transition: all 0.3s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 2px;
+      background: #2c1810;
+      transition: width 0.3s;
+    }
+    .nav-links a:hover::after { width: 100%; }
+    .btn-signin {
+      background: #2c1810;
+      color: white;
+      padding: 10px 25px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .btn-signin:hover { background: #1a0f0a; }
+    .navbar-wave {
+      display: block;
+      width: 100%;
+      height: 45px;
+      margin-top: -2px;
+    }
+
+    /* ── HERO / BACKGROUND ── */
+    .auth-hero {
+      width: 100%;
+      min-height: 100vh;
+      background: url('images/coffee.jpg') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 120px;
+      padding-bottom: 40px;
+      position: relative;
+    }
+    .auth-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(44, 24, 16, 0.65);
+    }
+
+    /* ── CARD ── */
+    .auth-container {
+      position: relative;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 50px 50px 40px;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      text-align: center;
+      width: 90%;
+      max-width: 460px;
+      color: white;
+    }
+
+    .auth-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: #9ba36a;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .auth-container h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+    .auth-subtitle {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 35px;
+    }
+
+    /* ── ROW (two fields side by side) ── */
+    .input-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    /* ── INPUT GROUP ── */
+    .input-group {
+      position: relative;
+      margin-bottom: 16px;
+      text-align: left;
+    }
+    .input-group i.icon {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(255,255,255,0.4);
+      font-size: 0.9rem;
+    }
+    .input-group input {
+      width: 100%;
+      padding: 14px 14px 14px 42px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 10px;
+      color: white;
+      font-size: 0.95rem;
+      font-family: 'Poppins', sans-serif;
+      outline: none;
+      transition: all 0.3s;
+    }
+    .input-group input::placeholder { color: rgba(255,255,255,0.45); }
+    .input-group input:focus {
+      border-color: #9ba36a;
+      background: rgba(255,255,255,0.15);
+      box-shadow: 0 0 0 3px rgba(155,163,106,0.2);
+    }
+    .input-group input.invalid {
+      border-color: #ff7b7b;
+      box-shadow: 0 0 0 3px rgba(255,123,123,0.15);
+    }
+
+    /* toggle password */
+    .toggle-pw {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(255,255,255,0.4);
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .toggle-pw:hover { color: #9ba36a; }
+
+    /* ── PASSWORD STRENGTH ── */
+    .strength-bar {
+      display: flex;
+      gap: 4px;
+      margin-top: 6px;
+    }
+    .strength-bar span {
+      flex: 1;
+      height: 4px;
+      border-radius: 2px;
+      background: rgba(255,255,255,0.15);
+      transition: background 0.3s;
+    }
+    .strength-bar span.weak   { background: #ff7b7b; }
+    .strength-bar span.medium { background: #f0a500; }
+    .strength-bar span.strong { background: #7dde8e; }
+    .strength-label {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+      text-align: right;
+      margin-top: 3px;
+    }
+
+    /* ── ERROR / SUCCESS ── */
+    .form-msg {
+      font-size: 0.85rem;
+      margin-bottom: 12px;
+      min-height: 18px;
+      text-align: left;
+      padding: 0 4px;
+      line-height: 1.5;
+      white-space: pre-line;
+    }
+    .form-msg.error   { color: #ff7b7b; }
+    .form-msg.success { color: #7dde8e; }
+
+    /* ── BUTTON ── */
+    .btn-submit {
+      width: 100%;
+      padding: 14px;
+      background: #9ba36a;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 5px;
+    }
+    .btn-submit:hover {
+      background: #8a945f;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(155,163,106,0.4);
+    }
+    .btn-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* ── TERMS ── */
+    .terms-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      text-align: left;
+      margin-bottom: 16px;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.6);
+    }
+    .terms-check input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      accent-color: #9ba36a;
+      margin-top: 2px;
+      cursor: pointer;
+    }
+
+    /* ── LINKS ── */
+    .auth-links {
+      margin-top: 22px;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.6);
+    }
+    .auth-links a {
+      color: #d4a574;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .auth-links a:hover { color: #e8c09a; text-decoration: underline; }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 20px 0;
+      color: rgba(255,255,255,0.3);
+      font-size: 0.8rem;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.15);
+    }
+
+    /* ── FOOTER ── */
+    .footer { background: #2c1810; color: #e6d5c3; padding: 80px 8% 30px; }
+    .footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 50px; max-width: 1200px; margin: 0 auto 50px; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #9ba36a; margin-bottom: 15px; }
+    .footer-col h4 { color: #9ba36a; margin-bottom: 15px; font-size: 1rem; }
+    .footer-col p { font-size: 0.9rem; line-height: 1.8; color: #b8a691; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { color: #b8a691; text-decoration: none; transition: color 0.3s; font-size: 0.9rem; }
+    .footer-col ul li a:hover { color: #9ba36a; }
+    .social-icons { display: flex; gap: 15px; margin-top: 12px; }
+    .social-icons a { width: 38px; height: 38px; background: rgba(155,163,106,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #9ba36a; transition: all 0.3s; }
+    .social-icons a:hover { background: #9ba36a; color: white; transform: translateY(-3px); }
+    .footer-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 25px; font-size: 0.85rem; color: #888; }
+
+    @media (max-width: 768px) {
+      .nav-inner { padding: 0 20px; }
+      .nav-links { display: none; }
+      .auth-container { padding: 40px 24px 35px; }
+      .input-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">Yaya's Caffee</a>
+      <ul class="nav-links">
+        <li><a href="index.php">Home</a></li>
+        <li><a href="menu.php">Menu</a></li>
+        <li><a href="dream.html">Our Story</a></li>
+        <li><a href="contact.php">Contact</a></li>
+      </ul>
+      <a href="signin.html" class="btn-signin">Sign In</a>
+    </div>
+    <svg class="navbar-wave" viewBox="0 0 1440 45" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,0 C120,45 240,45 360,22 S600,0 720,22 S960,45 1080,22 S1320,0 1440,22 L1440,0 L0,0 Z" fill="#9ba36a"/>
+    </svg>
+  </nav>
+
+  <!-- AUTH SECTION -->
+  <section class="auth-hero">
+    <div class="auth-container">
+
+      <p class="auth-logo">Yaya's Caffee</p>
+      <h2>Create Account</h2>
+      <p class="auth-subtitle">Join us and enjoy the full experience</p>
+
+      <form id="signup-form" autocomplete="off" novalidate>
+
+        <!-- First + Last name -->
+        <div class="input-row">
+          <div class="input-group">
+            <i class="fas fa-user icon"></i>
+            <input type="text" id="first_name" placeholder="First name" required autocomplete="off">
+          </div>
+          <div class="input-group">
+            <i class="fas fa-user icon"></i>
+            <input type="text" id="last_name" placeholder="Last name" required autocomplete="off">
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="input-group">
+          <i class="fas fa-envelope icon"></i>
+          <input type="email" id="email" placeholder="Email address" required autocomplete="off">
+        </div>
+
+        <!-- Password -->
+        <div class="input-group">
+          <i class="fas fa-lock icon"></i>
+          <input type="password" id="password" placeholder="Password (8+ chars, 1 uppercase, 1 number)" required autocomplete="new-password" oninput="checkStrength(this.value)">
+          <span class="toggle-pw" onclick="togglePassword('password', this)">
+            <i class="fas fa-eye"></i>
+          </span>
+          <div class="strength-bar">
+            <span id="bar1"></span>
+            <span id="bar2"></span>
+            <span id="bar3"></span>
+            <span id="bar4"></span>
+          </div>
+          <div class="strength-label" id="strength-label"></div>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="input-group">
+          <i class="fas fa-lock icon"></i>
+          <input type="password" id="confirm_password" placeholder="Confirm password" required autocomplete="new-password">
+          <span class="toggle-pw" onclick="togglePassword('confirm_password', this)">
+            <i class="fas fa-eye"></i>
+          </span>
+        </div>
+
+        <!-- Terms -->
+        <label class="terms-check">
+          <input type="checkbox" id="terms">
+          <span>I agree to the <a href="#" style="color:#d4a574;">Terms & Conditions</a> of Yaya's Caffee</span>
+        </label>
+
+        <div id="signup-msg" class="form-msg error"></div>
+
+        <button type="submit" class="btn-submit" id="signup-btn">
+          <i class="fas fa-user-plus"></i> Create Account
+        </button>
+
+      </form>
+
+      <div class="divider">or</div>
+
+      <div class="auth-links">
+        Already have an account? <a href="signin.html">Sign In</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <h3 class="footer-logo">Yaya's Caffee</h3>
+        <p>A place where coffee becomes a ritual, and every moment feels warmer.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="dream.html">Our Story</a></li>
+          <li><a href="contact.php">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p><i class="fas fa-envelope"></i> hello@yaya.com</p>
+        <p><i class="fas fa-phone"></i> +216 00 000 000</p>
+        <p><i class="fas fa-map-marker-alt"></i> Tunis, Tunisia</p>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Yaya's Caffee. All rights reserved. Made with ❤️ in Tunisia</p>
+    </div>
+  </footer>
+
+  <script>
+    // ── Toggle show/hide password ──
+    function togglePassword(inputId, icon) {
+      const input  = document.getElementById(inputId);
+      const isText = input.type === 'text';
+      input.type   = isText ? 'password' : 'text';
+      icon.innerHTML = isText
+        ? '<i class="fas fa-eye"></i>'
+        : '<i class="fas fa-eye-slash"></i>';
+    }
+
+    // ── Password strength indicator ──
+    function checkStrength(val) {
+      const bars  = [document.getElementById('bar1'), document.getElementById('bar2'),
+                     document.getElementById('bar3'), document.getElementById('bar4')];
+      const label = document.getElementById('strength-label');
+      let score   = 0;
+
+      if (val.length >= 8)             score++;
+      if (/[A-Z]/.test(val))           score++;
+      if (/[0-9]/.test(val))           score++;
+      if (/[^A-Za-z0-9]/.test(val))    score++;
+
+      bars.forEach((b, i) => {
+        b.className = '';
+        if (i < score) {
+          b.className = score <= 1 ? 'weak' : score <= 2 ? 'medium' : 'strong';
+        }
+      });
+
+      const labels = ['', 'Weak', 'Fair', 'Good', 'Strong'];
+      label.textContent = val.length ? labels[score] : '';
+    }
+
+    // ── Form submit ──
+    document.getElementById('signup-form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const msgBox = document.getElementById('signup-msg');
+      const btn    = document.getElementById('signup-btn');
+      msgBox.textContent = '';
+      msgBox.className   = 'form-msg';
+
+      // Remove previous invalid states
+      document.querySelectorAll('.input-group input').forEach(i => i.classList.remove('invalid'));
+
+      const first_name       = document.getElementById('first_name').value.trim();
+      const last_name        = document.getElementById('last_name').value.trim();
+      const email            = document.getElementById('email').value.trim();
+      const password         = document.getElementById('password').value;
+      const confirm_password = document.getElementById('confirm_password').value;
+      const terms            = document.getElementById('terms').checked;
+
+      // ── Client-side validation ──
+      const errors = [];
+
+      if (first_name.length < 2)
+        errors.push('First name must be at least 2 characters.');
+      else if (!/^[a-zA-Z\s]+$/.test(first_name))
+        errors.push('First name must contain only letters and spaces.');
+
+      if (last_name.length < 2)
+        errors.push('Last name must be at least 2 characters.');
+      else if (!/^[a-zA-Z\s]+$/.test(last_name))
+        errors.push('Last name must contain only letters and spaces.');
+
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+        errors.push('Please enter a valid email address.');
+
+      if (password.length < 8)
+        errors.push('Password must be at least 8 characters.');
+      else if (!/[A-Z]/.test(password))
+        errors.push('Password must contain at least one uppercase letter.');
+      else if (!/[0-9]/.test(password))
+        errors.push('Password must contain at least one number.');
+
+      if (password !== confirm_password)
+        errors.push('Passwords do not match.');
+
+      if (!terms)
+        errors.push('You must accept the Terms & Conditions.');
+
+      if (errors.length) {
+        msgBox.className   = 'form-msg error';
+        msgBox.textContent = errors.join('\n');
+        return;
+      }
+
+      // ── Loading state ──
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating account…';
+
+      try {
+        const res  = await fetch('/projet web/api/signup.php', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify({ first_name, last_name, email, password })
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          msgBox.className   = 'form-msg success';
+          msgBox.textContent = '✓ Account created! Redirecting to Sign In…';
+          setTimeout(() => { window.location.href = 'signin.html'; }, 1500);
+        } else {
+          msgBox.className   = 'form-msg error';
+          const msgs = data.errors ? data.errors.join('\n') : data.message;
+          msgBox.textContent = msgs;
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fas fa-user-plus"></i> Create Account';
+        }
+      } catch (err) {
+        msgBox.className   = 'form-msg error';
+        msgBox.textContent = 'Server error. Please try again.';
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-user-plus"></i> Create Account';
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,296 @@
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:#f8f3ee;
+    color:#2c1810;
+}
+ .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            
+            padding-bottom: 45px;
+        }
+ .nav-inner {
+            background: #9ba36a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 60px;
+            height: 75px;
+        }
+           .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #2c1810;
+            text-decoration: none;
+        }
+.nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+}
+ .nav-links a {
+            color: #2c1810;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
+        }
+.nav-links a:hover {
+    font-size: larger;
+   
+}
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+/* Icône panier */
+.cart-icon{
+    position:relative;
+    font-size:1.3rem;
+    color:#2c1810;
+    text-decoration:none;
+    transition:transform 0.3s ease;
+}
+
+.cart-icon:hover{
+    transform:scale(1.1);
+}
+
+/* Compteur */
+.cart-count{
+    position:absolute;
+    top:-8px;
+    right:-10px;
+    background:#d4a574;
+    color:#2c1810;
+    font-size:0.7rem;
+    font-weight:bold;
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+
+  .navbar-wave {
+            display: block;
+            width: 100%;
+            height: 45px;
+            margin-top: -2px; 
+            
+        }
+        
+.btn-signin {
+
+    color: #2c1810;
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: opacity 0.3s;
+     text-decoration: none;
+}
+.btn-signin:hover {
+    opacity: 0.85;
+}
+/* HERO */
+.story-hero{
+    height:60vh;
+    background:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),
+               url("images/coffee.jpg") center/cover no-repeat;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+}
+
+.story-hero h1{
+    font-family:'Playfair Display',serif;
+    font-size:3.5rem;
+    margin:0;
+    letter-spacing:2px;
+}
+
+.subtitle{
+    font-size:1.2rem;
+    margin-top:10px;
+    font-weight:300;
+}
+
+/* STORY TEXT */
+.story-content{
+    padding:120px 8%;
+    display:flex;
+    justify-content:center;
+}
+
+/* Cadre vintage */
+.text-block{
+    background:#f6f1ea;
+    max-width:850px;
+    padding:70px 80px;
+    border-radius:20px;
+    position:relative;
+    text-align:center;
+    line-height:1.9;
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,0.15),
+        inset 0 0 0 2px rgba(155,163,106,0.3);
+}
+
+/* Bordure décorative interne */
+.text-block::before{
+    content:"";
+    position:absolute;
+    top:20px;
+    left:20px;
+    right:20px;
+    bottom:20px;
+    border:1px solid rgba(155,163,106,0.4);
+    border-radius:15px;
+    pointer-events:none;
+}
+
+/* Titre dans le cadre */
+.text-block h1{
+    font-family:'Playfair Display',serif;
+    font-size:2.4rem;
+    margin-bottom:30px;
+    color:#2c1810;
+}
+
+/* Paragraphes */
+.text-block p{
+    margin-bottom:25px;
+    font-size:1.1rem;
+    color:#4a3528;
+}
+
+
+/* GALLERY */
+.gallery{
+    padding:80px 10%;
+    text-align:center;
+    background:#e8cfc3;
+}
+
+.gallery h2{
+    font-family:'Playfair Display',serif;
+    font-size:2.5rem;
+    margin-bottom:50px;
+}
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:40px;
+}
+
+.gallery-grid img{
+    width:100%;
+    height:280px;
+    object-fit:cover;
+    border-radius:20px;
+    box-shadow:0 15px 30px rgba(0,0,0,0.2);
+    transition:0.4s ease;
+}
+
+.gallery-grid img:hover{
+    transform:scale(1.05) rotate(-1deg);
+}
+/* ===== FOOTER ===== */
+
+.footer{
+    background:#2c1810;
+    color:#e6d5c3;
+    padding:80px 8% 30px;
+}
+
+.footer-container{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:50px;
+}
+
+.footer-col{
+    flex:1;
+    min-width:200px;
+}
+
+.footer-logo{
+    font-family:'Playfair Display',serif;
+    font-size:1.8rem;
+    margin-bottom:20px;
+}
+
+.footer-col h4{
+    margin-bottom:20px;
+    font-size:1rem;
+    color:#b08968;
+}
+
+.footer-col p{
+    font-size:0.9rem;
+    line-height:1.8;
+}
+
+.footer-col ul{
+    list-style:none;
+}
+
+.footer-col ul li{
+    margin-bottom:10px;
+}
+
+.footer-col ul li a{
+    text-decoration:none;
+    color:#e6d5c3;
+    transition:0.3s;
+}
+
+.footer-col ul li a:hover{
+    color:#b08968;
+}
+
+/* Social Icons */
+
+.social-icons{
+    display:flex;
+    gap:20px;
+    margin-top:15px;
+}
+
+.social-icons a{
+    color:#e6d5c3;
+    font-size:1.2rem;
+    transition:0.3s;
+}
+
+.social-icons a:hover{
+    color:#b08968;
+    transform:translateY(-3px);
+}
+
+/* Bottom */
+
+.footer-bottom{
+    margin-top:60px;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,0.1);
+    padding-top:20px;
+    font-size:0.85rem;
+}
+

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customize Your Coffee</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="customize.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">yaya's caffee</a>
+
+    <ul class="nav-links">
+      <li><a href="index.php">Home</a></li>
+      <li><a href="menu.php">Menu</a></li>
+      <li><a href="dream.html">Our story</a></li>
+      <li><a href="contact.php">Contact</a></li>
+    </ul>
+
+    <div class="nav-right">
+      <!-- Panier pro -->
+      <a href="cart.php" class="cart-icon">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span class="cart-count">0</span>
+      </a>
+
+      <a href="signin.html" class="btn-signin">Sign In</a>
+    </div>
+  </div>
+  <svg class="navbar-wave" viewBox="0 0 1440 45" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,0 C120,45 240,45 360,22 S600,0 720,22 S960,45 1080,22 S1320,0 1440,22 L1440,0 L0,0 Z" fill="#9ba36a"/>
+  </svg>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Craft Your Perfect Coffee</h1>
+  <p class="hero-text">Explore our boutique beans, textures, and flavors to create a coffee that's truly yours.</p>
+</section>
+
+<!-- BUILDER -->
+<section class="builder">
+
+  <!-- Coffee Type -->
+  <div class="options">
+    <h2>Coffee Type</h2>
+    <div id="coffee-options" class="grid">
+      <div class="option-card" data-value="latte" data-price="8.00">
+        <div class="option-name">Latte</div>
+        <div class="option-price">8.00 DT</div>
+      </div>
+      <div class="option-card" data-value="cappuccino" data-price="7.00">
+        <div class="option-name">Cappuccino</div>
+        <div class="option-price">7.00 DT</div>
+      </div>
+      <div class="option-card selected" data-value="espresso" data-price="5.00">
+        <div class="option-name">Espresso</div>
+        <div class="option-price">5.00 DT</div>
+      </div>
+      <div class="option-card" data-value="cold_brew" data-price="9.00">
+        <div class="option-name">Cold Brew</div>
+        <div class="option-price">9.00 DT</div>
+      </div>
+    </div>
+
+    <!-- Size -->
+    <h2>Size</h2>
+    <div id="size-options" class="grid">
+      <div class="option-card selected" data-value="S" data-price="0.00">
+        <div class="option-name">Small</div>
+        <div class="option-price">+0.00 DT</div>
+      </div>
+      <div class="option-card" data-value="M" data-price="1.50">
+        <div class="option-name">Medium</div>
+        <div class="option-price">+1.50 DT</div>
+      </div>
+      <div class="option-card" data-value="L" data-price="3.00">
+        <div class="option-name">Large</div>
+        <div class="option-price">+3.00 DT</div>
+      </div>
+    </div>
+
+    <!-- Milk Type -->
+    <h2>Milk Type</h2>
+    <div id="milk-options" class="grid">
+      <div class="option-card selected" data-value="whole_milk" data-price="0.00">
+        <div class="option-name">Whole Milk</div>
+        <div class="option-price">+0.00 DT</div>
+      </div>
+      <div class="option-card" data-value="oat_milk" data-price="1.00">
+        <div class="option-name">Oat Milk</div>
+        <div class="option-price">+1.00 DT</div>
+      </div>
+      <div class="option-card" data-value="almond_milk" data-price="1.00">
+        <div class="option-name">Almond Milk</div>
+        <div class="option-price">+1.00 DT</div>
+      </div>
+      <div class="option-card" data-value="soy_milk" data-price="1.00">
+        <div class="option-name">Soy Milk</div>
+        <div class="option-price">+1.00 DT</div>
+      </div>
+      <div class="option-card" data-value="no_milk" data-price="0.00">
+        <div class="option-name">No Milk</div>
+        <div class="option-price">+0.00 DT</div>
+      </div>
+    </div>
+
+    <!-- Extras -->
+    <h2>Extras</h2>
+    <div id="extras-options" class="grid">
+      <div class="extra-card" data-value="cinnamon" data-price="0.50">
+        <div class="option-name">Cinnamon</div>
+        <div class="option-price">+0.50 DT</div>
+      </div>
+      <div class="extra-card" data-value="chocolate" data-price="1.00">
+        <div class="option-name">Chocolate</div>
+        <div class="option-price">+1.00 DT</div>
+      </div>
+      <div class="extra-card" data-value="honey" data-price="1.50">
+        <div class="option-name">Honey</div>
+        <div class="option-price">+1.50 DT</div>
+      </div>
+      <div class="extra-card" data-value="extra_shot" data-price="2.00">
+        <div class="option-name">Extra Shot</div>
+        <div class="option-price">+2.00 DT</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ORDER SUMMARY -->
+  <div class="order-summary">
+    <h2>Your Order</h2>
+
+    <div class="summary-item">
+      <span>Coffee:</span>
+      <span id="sum-coffee">Espresso</span>
+    </div>
+
+    <div class="summary-item">
+      <span>Size:</span>
+      <span id="sum-size">Small</span>
+    </div>
+
+    <div class="summary-item">
+      <span>Milk:</span>
+      <span id="sum-milk">Whole Milk</span>
+    </div>
+
+    <div class="summary-item">
+      <span>Extras:</span>
+      <span id="sum-extras">None</span>
+    </div>
+
+    <div class="price-breakdown">
+      <div class="price-item">
+        <span>Base Price:</span>
+        <span id="price-base">5.00 DT</span>
+      </div>
+      <div class="price-item">
+        <span>Size:</span>
+        <span id="price-size">+0.00 DT</span>
+      </div>
+      <div class="price-item">
+        <span>Milk:</span>
+        <span id="price-milk">+0.00 DT</span>
+      </div>
+      <div class="price-item">
+        <span>Extras:</span>
+        <span id="price-extras">+0.00 DT</span>
+      </div>
+      <div class="price-total">
+        <span>Total:</span>
+        <span id="total-price">5.00 DT</span>
+      </div>
+    </div>
+
+    <button id="btn-order" class="btn-order" onclick="placeOrder()">
+      <i class="fas fa-shopping-cart"></i> Order Now
+    </button>
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-col">
+      <h3 class="footer-logo">Yaya's Caffee</h3>
+      <p>A place where coffee becomes a ritual, and every moment feels warmer.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Menu</a></li>
+        <li><a href="#">Our Story</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>Email: hello@yaya.com</p>
+      <p>Phone: +216 00 000 000</p>
+      <p>Tunis, Tunisia</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Yaya's Caffee. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="js/customize.js"></script>
+</body>
+</html>
