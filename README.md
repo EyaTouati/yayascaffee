@@ -111,3 +111,14 @@ projet web/
 │
 └── images/
 └── (images du site)
+##  Screenshots
+
+### Page d'accueil
+![Accueil](screenshots/home.png)
+
+### Menu
+![Menu](screenshots/menu.png)
+![Menu](screenshots/menu2.png)
+
+### Dashboard Admin
+![Admin](screenshots/admin.png)
